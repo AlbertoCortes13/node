@@ -1,0 +1,16 @@
+runtime: nodejs
+env: flex
+
+env_variables:
+  GSW_REDIS_HOST: '192.168.9.4'
+  GSW_REDIS_PORT: '6379'
+  SQL_USER: 'postgres'
+  SQL_HOST: '35.232.127.129'
+  SQL_PASSWORD: 'mgBCtj6twJ0yNhIM'
+  SQL_DATABASE: 'postgres'
+  INSTANCE_CONNECTION_NAME: 'warriors-chasecenter:us-central1:warriors-chasecenter-sql-db'
+  APP_DEPLOYED : 'true'
+
+network:
+  name: warriors-chasecenter-vpc
+  subnetwork_name: subnet-us-central1-10

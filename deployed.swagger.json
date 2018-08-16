@@ -1,0 +1,908 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "GSW - API documentation",
+        "version": "1.0.0",
+        "title": "Swagger UI - Golden State",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "email": "apiteam@swagger.io"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "host": "",
+    "basePath": "eco-crow-210016",
+    "tags": [
+        {
+            "name": "User",
+            "description": "Operations about user",
+            "externalDocs": {
+                "description": "Find out more about User model",
+                "url": "https://gsw2018.atlassian.net/wiki/spaces/MIC/pages/73007105/User+Profile+Model+and+Statuses"
+            }
+        },
+        {
+            "name": "NBA",
+            "description": "Operations that extends to the NBA API",
+            "externalDocs": {
+                "description": "PDF about NBA API",
+                "url": "https://gsw2018.atlassian.net/wiki/spaces/MIC/overview?preview=/2097344/80281676/nba_mobile_stats_feed_-_v2016__1_.pdf"
+            }
+        }
+    ],
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "consumes": "application/json",
+    "produces": "application/json",
+    "paths": {
+        "/users": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Get all Users",
+                "description": "Get all Users.",
+                "operationId": "getAllUsers",
+                "responses": {
+                    "200": {
+                        "description": "A list of all users",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/definitions/User"
+                                }
+                            }
+                        }
+                    },
+                    "5XX": {
+                        "description": "Unexpected error"
+                    },
+                    "default": {
+                        "description": "A list of all users"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Create user",
+                "description": "Create a user through the client APP",
+                "operationId": "createUser",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Created user object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/definitions/User"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request. User ID must be an integer and larger than 0"
+                    },
+                    "401": {
+                        "description": "Authorization information is missing or invalid."
+                    },
+                    "404": {
+                        "description": "A user with the specified ID was not found."
+                    },
+                    "5XX": {
+                        "description": "Unexpected error"
+                    },
+                    "default": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/users/info": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Get user info",
+                "description": "Fetch session token to return user info as JSON",
+                "operationId": "getUserInfo",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "header",
+                        "description": "The email of the user whose info is to be fetched.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/id={id}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Get user by user id",
+                "description": "Supply user unique ID and return proper json",
+                "operationId": "getUserById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id that needs to be fetched.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid id supplied"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Updated user",
+                "description": "This can only be done by the logged in user.",
+                "operationId": "updateUser",
+                "parameters": [
+                    {
+                        "name": "username",
+                        "in": "path",
+                        "description": "name that need to be updated",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Updated user object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid user supplied"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Delete user",
+                "description": "This can only be done by the logged in user.",
+                "operationId": "deleteUserById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id of the user to be deleted",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User removed"
+                    },
+                    "400": {
+                        "description": "Invalid id supplied"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            }
+        },
+        "/users/email={email}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Get user by user email",
+                "description": "Supply user unique object and return proper json",
+                "operationId": "getUserByEmail",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "path",
+                        "description": "The email of the user that needs to be fetched.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid id supplied"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Delete user by email",
+                "description": "This can only be done by the logged in user.",
+                "operationId": "deleteUserByEmail",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "path",
+                        "description": "The email of the user that needs to be deleted",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User removed"
+                    },
+                    "400": {
+                        "description": "Invalid email supplied"
+                    },
+                    "404": {
+                        "description": "Email not found"
+                    }
+                }
+            }
+        },
+        "/users/login": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Succesful Login request from firebase after authentication to store session in Redis",
+                "description": "This",
+                "operationId": "login",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "path",
+                        "description": "The email of the user that needs to be fetched.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid id supplied"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            }
+        },
+        "/users/logout": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Removes the session from the client  APP",
+                "description": "Request from the client to log out, deleting the session from the client APP",
+                "operationId": "logoutApp",
+                "parameters": [
+                    {
+                        "name": "x-gsw-session-token",
+                        "in": "header",
+                        "description": "The session token created by the Firebase service when loging in",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid id supplied"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            }
+        },
+        "/users/getInfo": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Get user info",
+                "description": "Get user info.",
+                "operationId": "getInfo",
+                "parameters": [
+                    {
+                        "name": "x-gsw-session-token",
+                        "in": "header",
+                        "description": "The session token created by the Firebase service when loging in",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Information of the users",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/definitions/User"
+                                }
+                            }
+                        }
+                    },
+                    "5XX": {
+                        "description": "Unexpected error"
+                    },
+                    "default": {
+                        "description": "Information of the users"
+                    }
+                }
+            }
+        },
+        "/users/is_ticket_holder": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Checks if the User is Season Ticket Holder",
+                "description": "Checks for the isSeasonTicketHolder in the User object",
+                "operationId": "isSeasonTicketHolder",
+                "parameters": [
+                    {
+                        "name": "x-gsw-session-token",
+                        "in": "header",
+                        "description": "The session token created by the Firebase service when loging in",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/ResponseObject"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid id supplied"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            }
+        },
+        "/nba/standings": {
+            "get": {
+                "tags": [
+                    "NBA",
+                    "Standings"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                }
+            }
+        },
+        "/nba/game_trackers/detail/game={gameId}": {
+            "get": {
+                "tags": [
+                    "NBA",
+                    "GameTrackers"
+                ],
+                "summary": "Return a game's score data.",
+                "description": "Return a game's top score, its teams' win-loss ratio, quarter by quarter score, and the comparation of the teams stats.",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "gameId",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "homeTeam"
+                    }
+                ],
+                "operationId": "getGameDetail",
+                "responses": {
+                    "200": {
+                        "description": "Returned game data.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "@TODO"
+                                }
+                            }
+                        }
+                    },
+                    "5XX": {
+                        "description": "Unexpected error"
+                    }
+                }
+            }
+        },
+        "/nba/game_trackers/detail/team_stats/game={gameId}": {
+            "get": {
+                "tags": [
+                    "NBA",
+                    "GameTrackers"
+                ],
+                "summary": "@TODO",
+                "description": "@TODO",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "@TODO",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "@TODO"
+                    }
+                ],
+                "operationId": "@TODO",
+                "responses": {
+                    "200": {
+                        "description": "@TODO",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "@TODO"
+                                }
+                            }
+                        }
+                    },
+                    "5XX": {
+                        "description": "@TODO"
+                    }
+                }
+            }
+        },
+        "/nba/game_trackers/top_scores/game={gameId}": {
+            "get": {
+                "tags": [
+                    "NBA",
+                    "GameTrackers"
+                ],
+                "summary": "@TODO",
+                "description": "@TODO",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "@TODO",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "@TODO"
+                    }
+                ],
+                "operationId": "@TODO",
+                "responses": {
+                    "200": {
+                        "description": "@TODO",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "@TODO"
+                                }
+                            }
+                        }
+                    },
+                    "5XX": {
+                        "description": "@TODO"
+                    }
+                }
+            }
+        },
+        "/nba/game_trackers/top_scores/scores/game={gameId}": {
+            "get": {
+                "tags": [
+                    "NBA",
+                    "GameTrackers"
+                ],
+                "summary": "@TODO",
+                "description": "@TODO",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "@TODO",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "@TODO"
+                    }
+                ],
+                "operationId": "@TODO",
+                "responses": {
+                    "200": {
+                        "description": "@TODO",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "@TODO"
+                                }
+                            }
+                        }
+                    },
+                    "5XX": {
+                        "description": "@TODO"
+                    }
+                }
+            }
+        },
+        "/nba/game_trackers/top_scores/win_loss/team={teamId}": {
+            "get": {
+                "tags": [
+                    "NBA",
+                    "GameTrackers"
+                ],
+                "summary": "@TODO",
+                "description": "@TODO",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "@TODO",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "@TODO"
+                    }
+                ],
+                "operationId": "@TODO",
+                "responses": {
+                    "200": {
+                        "description": "@TODO",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "@TODO"
+                                }
+                            }
+                        }
+                    },
+                    "5XX": {
+                        "description": "@TODO"
+                    }
+                }
+            }
+        },
+        "/nba/game_trackers/qbq/game={gameId}": {
+            "get": {
+                "tags": [
+                    "NBA",
+                    "GameTrackers"
+                ],
+                "summary": "@TODO",
+                "description": "@TODO",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "@TODO",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "@TODO"
+                    }
+                ],
+                "operationId": "@TODO",
+                "responses": {
+                    "200": {
+                        "description": "@TODO",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "@TODO"
+                                }
+                            }
+                        }
+                    },
+                    "5XX": {
+                        "description": "@TODO"
+                    }
+                }
+            }
+        },
+        "/nba/game_trackers/team/leaders/home={homeTeamName}&away={awayTeamName}": {
+            "get": {
+                "tags": [
+                    "NBA",
+                    "GameTrackers"
+                ],
+                "summary": "@TODO",
+                "description": "@TODO",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "@TODO",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "@TODO"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "@TODO",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": ""
+                                }
+                            }
+                        }
+                    },
+                    "5XX": {
+                        "description": "Unexpected error"
+                    },
+                    "default": {
+                        "description": "Team standings"
+                    }
+                }
+            }
+        },
+        "/nba/game_trackers/team/stats/home={homeTeamName}&away={awayTeamName}": {
+            "get": {
+                "tags": [
+                    "NBA",
+                    "GameTrackers"
+                ],
+                "summary": "Return co and season standings",
+                "description": "Return co and season standings",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "co",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "standing co"
+                    },
+                    {
+                        "in": "path",
+                        "name": "season",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "standing season"
+                    }
+                ]
+            }
+        },
+        "/nba/standings/conference:{confName}&season={seasonId}": {
+            "get": {
+                "tags": [
+                    "NBA",
+                    "Standings"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Team standings",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": ""
+                                }
+                            }
+                        }
+                    },
+                    "5XX": {
+                        "description": "Unexpected error"
+                    },
+                    "default": {
+                        "description": "Team standings"
+                    }
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "api_key": {
+            "type": "apiKey",
+            "name": "api_key",
+            "in": "header"
+        }
+    },
+    "definitions": {
+        "User": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "firstName": {
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "socialAccount": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "paymentMethods": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "phoneNumber": {
+                    "type": "string"
+                },
+                "address": {
+                    "type": "string"
+                },
+                "zipCode": {
+                    "type": "string"
+                },
+                "timeZone": {
+                    "type": "string"
+                },
+                "profilePhoto": {
+                    "type": "string"
+                },
+                "notifications": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "isSeasonTicketHolder": {
+                    "type": "boolean"
+                },
+                "isMediaMember": {
+                    "type": "boolean"
+                },
+                "inBayArea": {
+                    "type": "boolean"
+                },
+                "savedEvents": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "preferences": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "orderHistory": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "ResponseObject": {
+            "type": "object",
+            "properties": {
+                "response": {
+                    "type": "object",
+                    "description": "The response object expected from the request"
+                },
+                "code": {
+                    "type": "integer",
+                    "description": "The HTTP Status code",
+                    "example": [
+                        200,
+                        400,
+                        401,
+                        501
+                    ]
+                },
+                "error": {
+                    "type": "object",
+                    "description": "Standard error object with Error message and and the HTTP Status code again",
+                    "properties": {
+                        "message": {
+                            "type": "string",
+                            "description": "Message of the error",
+                            "example": [
+                                "User not found",
+                                "User not in database yet",
+                                "Unauthorized",
+                                "Fatal Error!"
+                            ]
+                        },
+                        "code": {
+                            "type": "integer",
+                            "description": "The HTTP Status code again",
+                            "example": [
+                                200,
+                                400,
+                                401,
+                                501
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "externalDocs": {
+        "description": "Find out more about Swagger",
+        "url": "http://swagger.io"
+    }
+}

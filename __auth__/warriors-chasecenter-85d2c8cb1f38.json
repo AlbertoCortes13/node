@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "warriors-chasecenter",
+  "private_key_id": "85d2c8cb1f382654905bad9c67a587a702023f13",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCoQD+ImQM1JMjG\n/cpzO07BobOweb/5EL2Vted+l/ECylo4+PAf4NH2b/coCqC3RvRobioeaA3+PRp+\nSVNNKZUZblj9QmSgmFl1i/Cwqk4v2eUuDVWmpnYuI+PFcaDbHaaQ9wMgNPeV0hVW\noRmozPRmeacqXIWV+/8I/nY9g36IihrITukw+JQt4spbJUbT91Aq6rZZZjEJmxd3\nqfeT5sTPl2pHQLYQefrZq4SxaGDtXuO9zUHTdgajPGiWa7553yA3TcLB1y3dt/ap\nOakH94Y3MmTHN/p3u+ZjREY23AklAvMwlSVW/CR6XwdIeJuhxHhcIDqDG2h4YN9b\nz6qi4HBDAgMBAAECggEAQ7LmXY5D7iRI7Vi9FzSr8dmgtcenaQ5FWnIBHb0BawAE\n4Zu48vrBQQm4R1JPbK+ONF7vb6Cq0LvBZ0MV05yBs+PkxrLqTnw+sr+GL2+3WiWw\nw6D178JXFyW1xoJ8GO6LURUzGsh1PsFzeJIGAxfE117n1nG4BquI6ROKfCHmzgUs\nZhuv9KJBXLlFmJk4mmtJ0Ugij2NjrMOZCy6pjzWTI/OB847elGo6TYlO7DzCpIRE\nMdblOcbRZLMQePNOk9r0s+PYqKVZcVMoLxEquSgHGmoW/2AIipICRrxn6Zlgnh5H\ncMbpl/23cbKlYDJ3GcHsVUoJ3MtMjVgoZJTZ8ILYYQKBgQDexkyn7xE19NCuherk\nFgt8NOyB9PowB1c3NsRoWLTTRHq7+9Lwd9RxKdKk7vvTrjzgHjVKXNqtYcAMXqhU\nk1vf7hXxVfM+BWTPAsgPc76Ur3LUGpe56f/afvls9rflJo75mltfrvirLCtoJ6i3\nWw3HgInna1FLGdSPJnzXPtFKeQKBgQDBWDITbru4jlvs3esjKHA+KTGFzuZVd4t7\n7GawKXoIIPpVulguD7KeBIsluEDMh8damyf79heFpT2imccHlf/CsfFQLwphNWFB\nc61dSgbPEASEXqklP7c5GrptFX25U8wM203sHFJ2sKPQ9fte9rqrlZHKGt2JfaVI\n64zQ+FThmwKBgH//YdXvh2z//9L2wPJSNEEmS2mT7xgfb54aypjFtwfYRciytQ1T\nXG20wQHhCjIi33lKAgZ6+W47RtQUoxUNIfG040ipwLu276f9iiNOtobJk+mIafr5\nFvdck0VnMFvqXqXNaYi9iMUY+Mu8VbUcDPu+v/2GbMwAyF+DlqE5x5jJAoGAMA7e\nE5p4qr0n+E6I/eo1TB4tIxd0hVX7o8f1FmCY5qBb2SdCd+CLA2AZvjx4Tt6JHOpo\nG+blneCe22Xh5O7R7fERDF9E8zizffNk6kVWP+25UbW90XZu8pDEOg0XfRNpKuDw\nE3pOvRXXAj/CRa6KY8//tv7Khjxm8yMpk1/GqXUCgYEAuAy2HN6p2IuHRX/KWbqZ\nMuShNjr3UAMRVV3TPc3WQZh8DkOy6lNgLVnrjWwYCr0Eb//ixUzjbJ1gE/yQiyES\nVoKTvxv1rlWpoG7npr53SfKZPuV7shgLvA0Xasws/bhAMTg3aFAosGLvwsoxbpHU\n9gd9vT0wJtoYYe30FC8FkE0=\n-----END PRIVATE KEY-----\n",
+  "client_email": "bucket-storage@warriors-chasecenter.iam.gserviceaccount.com",
+  "client_id": "102397415177707439872",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/bucket-storage%40warriors-chasecenter.iam.gserviceaccount.com"
+}

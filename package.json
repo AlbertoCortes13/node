@@ -1,0 +1,58 @@
+{
+    "name": "gsw-ms",
+    "version": "1.0.0",
+    "description": "GSW Microservices Dependencies",
+    "main": "app.js",
+    "watch": {
+        "test": [
+            "*.js",
+            "*.json"
+        ]
+    },
+    "scripts": {
+        "test": "mocha --recursive",
+        "start": "node app.js",
+        "local": "ENVIRONMENT='local' node app.js",
+        "develop": "ENVIRONMENT='develop' node app.js",
+        "watch": "npm-watch",
+        "deploy": "gcloud app deploy"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://bdulan@bitbucket.org/gsw2018/node.git"
+    },
+    "keywords": [
+        "gsw",
+        "node",
+        "express"
+    ],
+    "author": "Accenture - Golden State",
+    "license": "ISC",
+    "homepage": "https://bitbucket.org/gsw2018/node#readme",
+    "dependencies": {
+        "@google-cloud/storage": "^1.7.0",
+        "bluebird": "^3.5.1",
+        "body-parser": "^1.18.3",
+        "double-ended-queue": "^2.1.0-0",
+        "express": "^4.16.3",
+        "firebase": "^5.3.0",
+        "firebase-admin": "^5.12.1",
+        "fs": "0.0.1-security",
+        "pg": "^7.4.3",
+        "pg-hstore": "^2.3.2",
+        "redis": "^2.8.0",
+        "request": "^2.87.0",
+        "sequelize": "^4.38.0",
+        "swagger-ui-express": "^3.0.10",
+        "uuid": "^3.3.2",
+        "winston": "^3.0.0"
+    },
+    "devDependencies": {
+        "chai": "^4.1.2",
+        "eslint": "^4.19.1",
+        "eslint-config-airbnb-base": "^13.0.0",
+        "eslint-plugin-import": "^2.13.0",
+        "mocha": "^5.2.0",
+        "npm-watch": "^0.3.0"
+    }
+}
